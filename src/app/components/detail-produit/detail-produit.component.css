@@ -1,0 +1,48 @@
+.cart {
+  display: flex;
+  max-width: 670px;
+  padding: 1rem;
+}
+.form-control {
+  width: 30px;
+  margin: 0 30px;
+  text-align: center;
+}
+.size {
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.bi {
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 1.5rem;
+}
+
+.bi:hover {
+  color: #041527;
+}
+.plus {
+  display: flex;
+  gap: 0.5rem;
+}
+.cart-two {
+  background-color: #eee;
+  padding: 1rem 2rem;
+}
+
+.container {
+  position: relative;
+}
+.alert {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  background-color: lightgreen;
+  text-align: center;
+  width: 250px;
+  margin-top: 10px;
+  text-wrap: nowrap;
+  transition: 0.5s ease-in-out;
+}

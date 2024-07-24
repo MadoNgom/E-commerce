@@ -1,0 +1,20 @@
+<!-- carousel.component.html -->
+<div class="carousel-container">
+  <ngb-carousel *ngIf="images && images.length">
+    <ng-template ngbSlide *ngFor="let img of images; let i = index">
+      <div class="carousel-caption custom-caption">
+        <h3>Nouveautés</h3>
+        <p>Découvrez notre nouvelle collection de vêtements tendance.</p>
+
+        <p>
+          Nos articles les plus vendus à prix réduits. Ne manquez pas ces
+          incontournables !
+        </p>
+        <button class="btn btn-outline-warning">Découvrez nos produits</button>
+      </div>
+      <div class="picsum-img-wrapper">
+        <img [src]="img" alt="Slide {{ i + 1 }}" class="img-fluid" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
