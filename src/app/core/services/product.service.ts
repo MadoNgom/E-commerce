@@ -11,5 +11,4 @@ export class ProductService extends AbstractService<any> {
   constructor(http: HttpClient, toastService: ToastService) {
     super(http, toastService);
   }
-
 }

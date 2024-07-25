@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 
-import { CrudCategoriesComponent } from './components/crud-categories/crud-categories.component';
 import { GestionProduitsComponent } from './components/gestion-produits/gestion-produits.component';
 import { GestionUsersComponent } from './components/gestion-users/gestion-users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -21,10 +20,10 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
-      {
-        path: 'crud-categories',
-        component: CrudCategoriesComponent,
-      },
+      // {
+      //   path: 'crud-categories',
+      //   component: CrudCategoriesComponent,
+      // },
       {
         path: 'gestion-produits',
         component: GestionProduitsComponent,
