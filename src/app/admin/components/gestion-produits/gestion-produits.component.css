@@ -1,0 +1,38 @@
+.table-image {
+  td,
+  th {
+    vertical-align: middle;
+  }
+}
+.table-image td,
+th {
+  vertical-align: middle;
+}
+
+.edit {
+  color: #0ad66d;
+}
+.delete {
+  color: red;
+}
+
+table {
+  border-radius: 0.8rem;
+  width: 100%;
+}
+.table,
+th,
+td {
+  padding: 0.5rem;
+}
+td img {
+  width: 100px;
+  aspect-ratio: 16/9;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+
+  vertical-align: text-top;
+}
+.descr {
+  font-size: 10px;
+}
