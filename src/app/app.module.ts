@@ -20,6 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { BoutiqueComponent } from './components/boutique/boutique.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TokenInterceptor } from './core/interceptor/token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     UserModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
