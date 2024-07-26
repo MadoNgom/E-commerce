@@ -13,15 +13,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'produit/:id', component: DetailProduitComponent },
-  { path: 'panier', component: PanierComponent },
-  { path: 'commande', component: CommandeComponent },
-  { path: 'connexion', component: ConnexionComponent },
-  { path: 'inscription', component: InscriptionComponent },
-  { path: 'found', component: NotFoundComponent },
-  { path: 'boutique', component: BoutiqueComponent },
-  { path: '**', redirectTo: '' },
   {
     path: 'admin',
     loadChildren: () =>
@@ -36,6 +27,15 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
+  { path: 'home', component: HomeComponent },
+  { path: 'produit/:id', component: DetailProduitComponent },
+  { path: 'panier', component: PanierComponent },
+  { path: 'commande', component: CommandeComponent },
+  { path: 'connexion', component: ConnexionComponent },
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'found', component: NotFoundComponent },
+  { path: 'boutique', component: BoutiqueComponent },
+  { path: '**', redirectTo: '' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
