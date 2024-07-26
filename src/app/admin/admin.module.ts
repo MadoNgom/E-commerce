@@ -10,8 +10,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavComponent } from './components/nav/nav.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+<<<<<<< HEAD
 import { AjoutCategoriesComponent } from './components/ajout-categories/ajout-categories.component';
 import { AjoutProduitsComponent } from './components/ajout-produits/ajout-produits.component';
+=======
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
+>>>>>>> cde5dd908a7c290f034991e5fb3510c7f25eed73
 
 @NgModule({
   declarations: [
@@ -25,6 +30,13 @@ import { AjoutProduitsComponent } from './components/ajout-produits/ajout-produi
     AjoutProduitsComponent,
   ],
   imports: [CommonModule, AdminRoutingModule],
+<<<<<<< HEAD
   exports: [GestionUsersComponent, GestionProduitsComponent],
+=======
+  exports: [
+    GestionUsersComponent,
+    GestionProduitsComponent,
+  ],
+>>>>>>> cde5dd908a7c290f034991e5fb3510c7f25eed73
 })
 export class AdminModule {}

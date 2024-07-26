@@ -21,8 +21,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { BoutiqueComponent } from './components/boutique/boutique.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,10 +41,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    AdminModule,
+    HttpClientModule,
     BoutiquierModule,
     UserModule,
     NgbModule,
+
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

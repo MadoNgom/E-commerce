@@ -22,11 +22,18 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
+<<<<<<< HEAD
       {
         path: 'ajout-categories',
         component: AjoutCategoriesComponent,
       },
 
+=======
+      // {
+      //   path: 'crud-categories',
+      //   component: CrudCategoriesComponent,
+      // },
+>>>>>>> cde5dd908a7c290f034991e5fb3510c7f25eed73
       {
         path: 'gestion-produits',
         component: GestionProduitsComponent,
