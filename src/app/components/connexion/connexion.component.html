@@ -1,30 +1,49 @@
 <app-header></app-header>
 <div class="banner">
   <div class="container d-flex justify-content-center align-items-center">
-    <form action="" class="form shadow mt-4 bg-white" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form
+      action=""
+      class="form shadow mt-4 bg-white"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
       <div class="text-center p-6">
         <h3 class="mx-2">Connexion</h3>
       </div>
-
       <div class="form-group my-4">
         <label for="email">Votre Email</label> <br />
-        <input 
-        formControlName="email" 
+        <input
+          formControlName="email"
           type="email"
           name="email"
+          id="email"
           class="form-control p-2"
           placeholder="Entrez votre email"
         />
+        <div class="text-danger fs-6" *ngIf="email.errors">
+          <span *ngIf="email?.errors?.['required']"> L'email est requis </span>
+          <span *ngIf="email?.errors?.['email']">
+            L'email n'est pas valide
+          </span>
+        </div>
       </div>
       <div class="form-group my-3">
         <label for="pwd">Votre mot de passe</label>
         <input
           type="password"
-          formControlName="password" 
+          formControlName="password"
           name="pwd"
           class="form-control p-2"
           placeholder="Entrez votre mot de passe"
         />
+        <div *ngIf="password.errors" class="text-danger fs-6">
+          <span *ngIf="password.errors?.['required']">
+            Mot de passe requis*
+          </span>
+          <span *ngIf="password.errors?.['minlength']">
+            Mot de passe requis 6 characters min
+          </span>
+        </div>
       </div>
       <div class="fs-6 text-left">
         <a href="#">Mot de passe oublié?</a>
@@ -49,7 +68,8 @@
         />
       </div>
       <p class="mt-2 text-black-50 fs-6">
-        Vous n'avez pas de compte? <a href="">Inscrivez-vous</a>
+        Vous n'avez pas de compte?
+        <a href="" routerLink="/inscription">Inscrivez-vous</a>
       </p>
     </form>
   </div>

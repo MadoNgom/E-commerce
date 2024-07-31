@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { delay, tap } from 'rxjs';
 
 @Component({
@@ -10,6 +11,9 @@ import { delay, tap } from 'rxjs';
   styleUrl: './connexion.component.css',
 })
 export class ConnexionComponent implements OnInit {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {}
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [
@@ -17,10 +21,6 @@ export class ConnexionComponent implements OnInit {
       Validators.required,
     ]),
   });
-
-  constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   get email() {
     return this.form?.get('email') as FormControl;
@@ -40,9 +40,9 @@ export class ConnexionComponent implements OnInit {
             if (p === 'admin') {
               this.router.navigate(["/page de l`'admin"]);
             } else if (p === 'boutiquier') {
-              this.router.navigate(['/nghnhnf']);
+              this.router.navigate(['/boutiquier/dashboard']);
             } else {
-              this.router.navigate(['/page du client']);
+              this.router.navigate(['/admin/dashboard']);
             }
             this.router.navigate(['/']);
           }

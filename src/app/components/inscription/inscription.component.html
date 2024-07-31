@@ -1,40 +1,132 @@
 <app-header></app-header>
 <div class="banner">
   <div class="container d-flex justify-content-center align-items-center">
-    <form action="" class="form shadow mt-4 bg-white" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form
+      class="form shadow mt-4 bg-white"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
       <div class="text-center p-6">
         <h3 class="mx-2">inscription</h3>
       </div>
-      <div class="form-group my-4">
-        <label for="email">Nom Complet</label> <br />
-        <input formControlName="firstname" type="text" name="text" class="form-control p-2" placeholder="Nom complet" />
+      <div class="form-group d-flex my-4 g-2">
+        <div>
+          <label for="firstname">Nom</label> <br />
+          <input
+            formControlName="firstname"
+            type="text"
+            name="text"
+            class="form-control p-2"
+            placeholder="Nom complet"
+          />
+          <div class="text-danger">
+            <span *ngIf="firstname.invalid && firstname.touched" class="fs-6">
+              ce champ est obligatoire
+            </span>
+          </div>
+        </div>
+        <div class="mx-2">
+          <label for="lastname">Prenom</label> <br />
+          <input
+            formControlName="lastname"
+            type="text"
+            name="lastname"
+            id="lastname"
+            class="form-control p-2"
+            placeholder="votre Prenom"
+          />
+          <div class="text-danger">
+            <span *ngIf="lastname.invalid && lastname.touched" class="fs-6">
+              le prenom est requis
+            </span>
+          </div>
+        </div>
       </div>
       <div class="form-group my-4">
         <label for="email">Votre Email</label> <br />
-        <input formControlName="email" type="email" name="email" class="form-control p-2"
-          placeholder="Entrez votre email" />
+        <input
+          formControlName="email"
+          type="email"
+          name="email"
+          class="form-control p-2"
+          placeholder="Entrez votre email"
+        />
+        <div
+          class="text-danger border-danger fs-6"
+          *ngIf="email.invalid && email.touched"
+        >
+          <span *ngIf="email.errors?.['required']">
+            l'adresse mail est obligatoire
+          </span>
+          <span *ngIf="email.errors?.['email']">
+            le mail n'est pas valide
+          </span>
+        </div>
       </div>
       <div class="form-group my-3">
-        <label for="pwd">Votre mot de passe</label>
-        <input formControlName="password" type="password" name="pwd" class="form-control p-2"
-          placeholder="Entrez votre mot de passe" />
-      </div>
-      <div class="fs-6 text-left">
-        <a href="#">Mot de passe oublié?</a>
+        <div>
+          <label for="password">Votre mot de passe</label>
+          <input
+            formControlName="password"
+            type="password"
+            name="pass"
+            class="form-control p-2"
+            placeholder="Entrez votre mot de passe"
+          />
+          <div
+            *ngIf="password.invalid && password.touched"
+            class="text-danger fs-6"
+          >
+            <div *ngIf="password.errors?.['required']">
+              le mot de pass est requis
+            </div>
+            <span *ngIf="password.errors?.['minlength']">
+              le mot de pass est trop court
+            </span>
+            <span *ngIf="password.errors?.['pattern']">
+              le mot de pass doit au moins contenir une lettre majuscule, une le
+              majuscule et un chiffre
+            </span>
+          </div>
+        </div>
+        <div class="mt-2">
+          <label for="password">confirmer le mot de passe</label>
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            name="confirmPassword"
+            class="form-control p-2"
+            placeholder="Confimer le mot de Pass"
+          />
+        </div>
+        <div
+          class="text-danger fs-6 border-danger"
+          *ngIf="confirmPassword.invalid && confirmPassword.touched"
+        >
+          le mot de pass ne correspond pas>
+        </div>
       </div>
       <div class="form-group fs-6 text-black-50">
-        <input type="checkbox" name="checkbox" id="" /> Se souvenir de moi
-        <button type="submit" class="btn text-white p-2 w-100 btn-dark rounded-2 mt-3" >
-          Se connecter
+        <button
+          type="submit"
+          class="btn text-white p-2 w-100 btn-dark rounded-2 mt-3"
+        >
+          S'incrire
         </button>
       </div>
       <p class="text-black-50 text-center mt-1">Ou</p>
       <div class="d-flex justify-content-center align-items-center">
         <img src="../../../assets/images/google.png" alt="" width="30px" />
-        <img src="../../../assets/images/face.png" alt="" width="30px" class="mx-3" />
+        <img
+          src="../../../assets/images/face.png"
+          alt=""
+          width="30px"
+          class="mx-3"
+        />
       </div>
       <p class="mt-2 text-black-50 fs-6">
-        Vous n'avez pas de compte? <a href="">Inscrivez-vous</a>
+        Vous avez déja un compte?
+        <a href="" routerLink="/connexion">Se connecter</a>
       </p>
     </form>
   </div>

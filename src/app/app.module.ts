@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 // MODULES
 import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from './admin/admin.module';
@@ -45,7 +44,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BoutiquierModule,
     UserModule,
     NgbModule,
-
     ReactiveFormsModule,
     FormsModule,
   ],
