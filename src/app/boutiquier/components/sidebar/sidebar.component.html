@@ -1,0 +1,41 @@
+<aside class="aside bg-dark text-light">
+  <div class="d-flex align-items-center px-4">
+    <h4 class="mx-2">Finshop</h4>
+    <img src="../../../../assets/images/shopping-bag.png" width="40px" />
+  </div>
+  <hr />
+  <ul class="nav-ul">
+    <li *ngFor="let item of menuItems" class="nav-item">
+      <span><i [class]="item.icon"></i></span>
+      <ng-container *ngIf="!item.dropdown; else dropdownTemplate">
+        <a
+          class="nav-link"
+          [ngClass]="item.className"
+          [routerLink]="item.link"
+          (click)="handleItemClick(item)"
+          >{{ item.label }}
+        </a>
+      </ng-container>
+      <ng-template #dropdownTemplate>
+        <div class="dropdown">
+          <a
+            class="btn btn-secondary dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ item.label }}
+          </a>
+          <ul class="dropdown-menu">
+            <li *ngFor="let subItem of item.dropdown">
+              <a class="dropdown-item" [routerLink]="subItem.link">{{
+                subItem.label
+              }}</a>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+</aside>

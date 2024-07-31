@@ -10,7 +10,6 @@ import { delay, tap } from 'rxjs';
   styleUrl: './connexion.component.css',
 })
 export class ConnexionComponent implements OnInit {
-
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [
@@ -18,7 +17,7 @@ export class ConnexionComponent implements OnInit {
       Validators.required,
     ]),
   });
-  
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -41,7 +40,7 @@ export class ConnexionComponent implements OnInit {
             if (p === 'admin') {
               this.router.navigate(["/page de l`'admin"]);
             } else if (p === 'boutiquier') {
-              this.router.navigate(["/page du boutiquier"]);
+              this.router.navigate(['/nghnhnf']);
             } else {
               this.router.navigate(['/page du client']);
             }

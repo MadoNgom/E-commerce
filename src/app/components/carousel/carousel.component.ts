@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './carousel.component.css',
 })
 export class CarouselComponent {
-  @Input() images: string[] = [];
+  @Input() image: string[] = [];
 }

@@ -1,7 +1,7 @@
 <!-- carousel.component.html -->
 <div class="carousel-container">
-  <ngb-carousel *ngIf="images && images.length">
-    <ng-template ngbSlide *ngFor="let img of images; let i = index">
+  <ngb-carousel *ngIf="image && image.length">
+    <ng-template ngbSlide *ngFor="let img of image; let i = index">
       <div class="carousel-caption custom-caption">
         <h3>Nouveautés</h3>
         <p>Découvrez notre nouvelle collection de vêtements tendance.</p>

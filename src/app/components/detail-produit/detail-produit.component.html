@@ -9,7 +9,7 @@
         <img src="../../../assets/images/img1.png" alt="" />
       </div>
       <div class="info mx-3">
-        <h3>Nike summer collection</h3>
+        <h3>{{ produit.name }}</h3>
         <h5 class="py-6">chaussures pour Hommes</h5>
         <div class="rating text-warning">
           <i class="bi bi-star-fill"></i>
@@ -19,8 +19,7 @@
           <i class="bi bi-star-half"></i>
         </div>
         <p class="fs-6">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque
-          reprehenderit soluta repellendus iste sint expedita porro
+          {{ produit.description }}
         </p>
         <div>
           <h6>Quantité</h6>
@@ -30,7 +29,7 @@
               style="cursor: pointer"
               (click)="decrementQuantity()"
             ></i>
-            <span class="px-2 fs-5"> {{ quantity }}</span>
+            <span class="px-2 fs-5"> {{ produit.quantity }}</span>
             <i
               class="bi bi-plus"
               style="cursor: pointer"
