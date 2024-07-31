@@ -1,0 +1,20 @@
+<header class="bg-slate-100 text-black p-4 flex-shrink-0 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl text-amber-400 font-bold">Fineshop</h1>
+        <div class="flex items-center space-x-4">
+            <div class="relative dropdown" (click)="toggleDropdown()">
+                <button class="flex items-center focus:outline-none">
+                    <img src="{{userInfo?.imageUrl}}" alt="Avatar" class="w-8 h-8 rounded-full mr-2">
+                    <span class="hidden sm:block ">{{ getUserDisplayName() }}</span>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-10"
+                    *ngIf="dropdownOpen">
+                    <a routerLink="profil" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mon profil</a>
+                    <div class="border-t border-gray-200"></div>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        (click)="logout()">Déconnexion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,122 @@
+<div class="container w-full">
+    <div class="p-2 bg-white text-slate-950 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <span class="text-amber-400 text-2xl font-bold cursor-pointer" routerLink="/">Fineshop</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <a routerLink="/" routerLinkActive="text-amber-500"
+                class="text-slate-900 hover:text-amber-500 cursor-pointer">Accueil</a>
+            <a class="mr-5"><i class="pi pi-shopping-cart cursor-pointer" pBadge [value]="cartItemCount"
+                    (click)="sidebarVisible = true"></i></a>
+            <ng-container *ngIf="isLoggedIn; else notLoggedIn">
+                <div class="relative ml-auto" (click)="toggleDropdown()">
+                    <div class="flex items-center space-x-2 cursor-pointer">
+                        <div class="rounded-full overflow-hidden h-8 w-8">
+                            <img [src]="userInfo?.imageUrl ? userInfo.imageUrl : '../../../../assets/logo.jpg'"
+                                alt="Avatar" class="w-8 h-8 rounded-full">
+                        </div>
+                        <span class="text-amber-400">{{userInfo?.firstname + " " + userInfo?.lastname}}</span>
+                    </div>
+                    <div *ngIf="dropdownOpen"
+                        class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                        <a routerLink="profil" routerLinkActive="text-amber-500"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                            *ngIf="userInfo?.role==='user'">Profil</a>
+                            <a routerLink="profil" routerLinkActive="text-amber-500"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                            *ngIf="userInfo?.role==='user'">Mes achats</a>
+                        <a routerLinkActive="text-amber-500" routerLink="/admin"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Mon
+                            espace</a>
+                        <div class="border-t border-gray-200"></div>
+                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                            (click)="logout()">Déconnexion</a>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #notLoggedIn>
+                <a class="border border-white rounded bg-slate-100  text-slate-900 p-2"
+                    routerLink="register">Inscription</a>
+                <a class="border border-white rounded bg-amber-400  text-slate-900 p-2" routerLink="login">Connexion</a>
+            </ng-template>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+
+<div class="card flex justify-content-center">
+    <p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="p-sidebar-md">
+        <ng-template pTemplate="header">
+            <span class="font-semibold text-xl">Mon panier</span>
+        </ng-template>
+        <div class="flow-root" *ngIf="panier?.length > 0; else noPanier">
+            <ul role="list" class="-my-6 divide-y divide-gray-200" *ngFor="let _p of panier">
+                <li class="flex py-6">
+                    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                        <img [src]="_p.images[0]"
+                            alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                            class="h-full w-full object-cover object-center">
+                    </div>
+                    <div class="ml-4 flex flex-1 flex-col">
+                        <div>
+                            <div class="flex justify-between text-base font-medium text-gray-900">
+                                <h3>
+                                    <span>{{_p.name}}</span>
+                                </h3>
+                                <p class="ml-4">{{_p.price * _p.quantity}} F cfa</p>
+                            </div>
+                            <p class="mt-1 text-sm text-gray-500">{{_p.category}}</p>
+                        </div>
+                        <div class="flex flex-1 items-end justify-between text-sm">
+                            <div class="flex items-center">
+                                <button type="button" class="text-slate-600" (click)="decrementer(_p.id)">
+                                  <i class="pi pi-minus"></i>
+                                </button>
+                                <p class="text-slate-700 mx-2">{{_p.quantity}}</p>
+                                <button type="button" class="text-slate-600" (click)="incrementer(_p.id)">
+                                  <i class="pi pi-plus"></i>
+                                </button>
+                              </div>
+                              <div class="flex items-center">
+                                <button type="button" class="font-medium text-red-600 hover:text-red-500" (click)="supprimer(_p.id)">
+                                  Supprimer
+                                </button>
+                              </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="border-t border-gray-200 px-4 py-6 sm:px-6 mt-2">
+                <div class="flex justify-between text-base font-medium text-gray-900">
+                    <p>Total</p>
+                    <p>{{total}} F cfa</p>
+                </div>
+                <div class="mt-6">
+                    <a (click)="finaliser()"
+                        class=" w-full flex items-center justify-center rounded-md border border-transparent bg-amber-400 px-6 py-3 text-base font-medium text-slate-700 shadow-sm hover:bg-amber-400 cursor-pointer">Envoyer ma commande</a>
+                </div>
+                <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
+                    <p>
+                        Ou
+                        <button type="button" class="font-medium text-amber-400 hover:text-amber-400" (click)="sidebarVisible = false">
+                            Continuer mon achat
+                            <span aria-hidden="true"> &rarr;</span>
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <ng-template #noPanier>
+            <div class="flex flex-col items-center justify-center mt-5">
+                <i class="pi pi-cart-arrow-down text-9xl mb-4"></i>
+                <span class="text-lg text-gray-700">Votre panier est vide.</span>
+            </div>
+            <div class="mt-6 w-full flex justify-center">
+                <button (click)="sidebarVisible = false"
+                    class="w-full max-w-sm flex items-center justify-center rounded-md border border-transparent bg-amber-400 px-6 py-3 text-base font-medium text-slate-700 shadow-sm cursor-pointer">
+                    Continuer mon achat
+                </button>
+            </div>
+        </ng-template>      
+    </p-sidebar>
+</div>
