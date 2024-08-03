@@ -83,10 +83,10 @@
             <span *ngIf="password.errors?.['minlength']">
               le mot de pass est trop court
             </span>
-            <span *ngIf="password.errors?.['pattern']">
+            <!-- <span *ngIf="password.errors?.['pattern']">
               le mot de pass doit au moins contenir une lettre majuscule, une le
               majuscule et un chiffre
-            </span>
+            </span> -->
           </div>
         </div>
         <div class="mt-2">
@@ -103,7 +103,7 @@
           class="text-danger fs-6 border-danger"
           *ngIf="confirmPassword.invalid && confirmPassword.touched"
         >
-          le mot de pass ne correspond pas>
+          le mot de pass ne correspond pas
         </div>
       </div>
       <div class="form-group fs-6 text-black-50">

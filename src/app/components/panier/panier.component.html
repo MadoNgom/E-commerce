@@ -1,1 +1,67 @@
-<p>panier works!</p>
+<app-header></app-header>
+<div class="container mt-4">
+  <h2>Panier ({{ cartItemCount }})</h2>
+  <div class="row d-flex" *ngIf="cartItemCount > 0; else videpanier">
+    <div class="col-md-8">
+      <!-- card-content -->
+      <div class="cart-content mb-3" *ngFor="let item of panier">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="left-content d-flex align-items-center">
+            <img src="../../../assets/images/img1.png" alt="" height="100px" />
+            <div class="mx-3">
+              <h5 class="product-name">{{ item.name }}</h5>
+              <p>Vendeur :{{ item.vendeur }}</p>
+              <p class="fs-6 text-success">En Stock</p>
+            </div>
+          </div>
+          <div class="right-content">
+            <h5>{{ item.price * item.quantity }}</h5>
+            <p class="mt-1 fs-6 text-black-50">{{ item.category }}</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-outline-danger" (click)="supprimer(item.id)">
+            <i class="bi bi-trash"></i> supprimer
+          </button>
+          <div>
+            <div class="d-flex fs-4">
+              <button class="btn btn-danger" (click)="decrementer(item.id)">
+                <i class="bi bi-dash fw-bold" style="cursor: pointer"></i>
+              </button>
+              <span class="px-2 fs-4">{{ item.quantity }}</span>
+              <button class="btn btn-dark" (click)="incrementer(item.id)">
+                <i class="bi bi-plus fw-bold" style="cursor: pointer"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 resumer">
+      <h6>Résumer Panier</h6>
+      <hr />
+      <div class="d-flex justify-content-between align-items-center">
+        <span>Total Panier :</span>
+        <h4>{{ total }} fr</h4>
+      </div>
+      <p class="text-black-50 my-2">Frais de livraison non inclus à ce stade</p>
+      <button class="btn btn-danger w-100 d-block my-3">
+        Commander <span>({{ total }} fr)</span>
+      </button>
+      <div>
+        <h6>Les retours sont faciles</h6>
+        <p class="fs-6 text-black-50">Retours gratuits sous 7 jour</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #videpanier>
+    <div>
+      <p class="fs-4 text-black-50 my-3">
+        votre panier est vide . voulez-vous ajouter quelque chose
+      </p>
+      <a class="btn btn-outline-warning" routerLink="/"
+        >voir produits disponible</a
+      >
+    </div>
+  </ng-template>
+</div>

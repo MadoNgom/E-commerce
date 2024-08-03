@@ -23,7 +23,7 @@ export class InscriptionComponent implements OnInit {
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/),
+        // Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/),
       ]),
       confirmPassword: new FormControl('', [
         Validators.required,
@@ -64,6 +64,7 @@ export class InscriptionComponent implements OnInit {
       this.authService.register(data).subscribe((response) => {
         if (response) {
           this.router.navigate(['/connexion']);
+          console.log('response');
         }
       });
     }

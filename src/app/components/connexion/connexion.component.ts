@@ -38,13 +38,12 @@ export class ConnexionComponent implements OnInit {
           if (response) {
             const p = response?.user?.role;
             if (p === 'admin') {
-              this.router.navigate(["/page de l`'admin"]);
+              this.router.navigate(['/admin/dashboard']);
             } else if (p === 'boutiquier') {
               this.router.navigate(['/boutiquier/dashboard']);
             } else {
-              this.router.navigate(['/admin/dashboard']);
+              this.router.navigate(['/']);
             }
-            this.router.navigate(['/']);
           }
         });
     }
