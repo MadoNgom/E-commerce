@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // MODULES
 import { AppRoutingModule } from './app-routing.module';
-import { AdminModule } from './admin/admin.module';
 import { BoutiquierModule } from './boutiquier/boutiquier.module';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';

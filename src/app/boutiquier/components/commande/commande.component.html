@@ -5,85 +5,39 @@
       <hr />
     </div>
     <div class="table-body">
-      <table class="table-striped">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Client</th>
-            <th>Addresse</th>
-            <th>Date Commande</th>
-            <th>Montant</th>
-            <th>Etat</th>
-          </tr>
-        </thead>
-        <!-- TABLE BODY -->
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>
-              <img src="../../../../assets/profile/person2.jpg" alt="" />
-              Aminata Fall
-            </td>
-            <td>Dakar/Parcelles</td>
-            <td>
-              <p>12 / Juilet / 2024</p>
-            </td>
-            <td>54.500 Fcfa</td>
-            <div class="d-flex">
-              <td class="text-success">Valider</td>
-              <td class="text-danger">Rejeter</td>
-            </div>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>
-              <img src="../../../../assets/profile/person3.jpg" alt="" />
-              Aminata Fall
-            </td>
-            <td>Dakar/Parcelles</td>
-            <td>
-              <p>12 / Juilet / 2024</p>
-            </td>
-            <td>54.500 Fcfa</td>
-            <div class="d-flex">
-              <td class="text-success">Valider</td>
-              <td class="text-danger">Rejeter</td>
-            </div>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>
-              <img src="../../../../assets/profile/person3.jpg" alt="" />
-              Aminata Fall
-            </td>
-            <td>Dakar/Parcelles</td>
-            <td>
-              <p>12 / Juilet / 2024</p>
-            </td>
-            <td>54.500 Fcfa</td>
-            <div class="d-flex">
-              <td class="text-success">Valider</td>
-              <td class="text-danger">Rejeter</td>
-            </div>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>
-              <img src="../../../../assets/profile/person3.jpg" alt="" />
-              Aminata Fall
-            </td>
-            <td>Dakar/Parcelles</td>
-            <td>
-              <p>12 / Juilet / 2024</p>
-            </td>
-            <td>54.500 Fcfa</td>
-            <div class="d-flex">
-              <td class="text-success">Valider</td>
-              <td class="text-danger">Rejeter</td>
-            </div>
-          </tr>
-        </tbody>
-      </table>
+      <ng-container *ngIf="orders$ | async as orders">
+        <table class="table-striped">
+          <thead class="bg-warning text-black-50 rounded-2 shadow-sm">
+            <tr>
+              <th>Image</th>
+              <th>Nom produit</th>
+              <th>Client</th>
+              <th>Quantité</th>
+              <th>Prix unitaire</th>
+              <th>Statut</th>
+              <th>actions</th>
+            </tr>
+          </thead>
+          <!-- TABLE BODY -->
+          <tbody>
+            <tr *ngFor="let data of orders">
+              <td>
+                <!-- <img [src]="data.product?.images[0]" class="h-10 w-10" /> -->
+              </td>
+              <td>{{ data.product?.name }}</td>
+              <td>
+                <p>{{ data.user?.firstname + " " + data.user?.lastname }}</p>
+              </td>
+              <td>{{ data.quantity }}</td>
+              <td>{{ data.product?.price }} Fcfa</td>
+              <div class="d-flex">
+                <td class="text-success">Valider</td>
+                <td class="text-danger">Rejeter</td>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
     </div>
   </div>
 </section>
