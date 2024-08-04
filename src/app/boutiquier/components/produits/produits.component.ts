@@ -36,6 +36,11 @@ export class ProduitsComponent {
         this.totalProducts = response.total;
       });
   }
+  deleteProduct(id: number) {
+    this.productService.delete(`products/${id}`).subscribe((response) => {
+      console.log('produit supprimer', response);
+    });
+  }
 
   onPageChange(_p: any) {
     this.pageSize = _p.pageSize;
