@@ -38,6 +38,11 @@ export class CommandeComponent {
         this.totalOrders = response.total;
       });
   }
+  validerCommande(id: number) {
+    this.productService.update(`orders/${id}`, null).subscribe((response) => {
+      console.log('orders valider', response);
+    });
+  }
 
   onPageChange(_p: any) {
     this.pageSize = _p.pageSize;

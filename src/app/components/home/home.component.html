@@ -5,17 +5,14 @@
   <h3 class="text-center py-2">Votre satisfaction est tout ce qui compte</h3>
 
   <div class="container">
-    <div
-      class="liste-produts product"
-      *ngIf="listeProduit$ | async as produits"
-    >
+    <div class="liste-produts" *ngIf="listeProduit$ | async as produits">
       <!-- FIRST CART -->
-      <div class="box py-2 py-4" *ngFor="let produit of produits">
+      <div class="py-2 py-4 product" *ngFor="let produit of produits">
         <!-- <span>40%</span> -->
         <!-- <div class="card-img">
           <img [src]="produit.images" width="150px" height="100px" alt="" />
         </div> -->
-        <div class="card-body mb-2">
+        <div class="card-body mb-2 box">
           <h6>{{ produit.name }}</h6>
           <h5>{{ produit.description }}</h5>
           <div class="d-flex justify-content-between align-items-center">

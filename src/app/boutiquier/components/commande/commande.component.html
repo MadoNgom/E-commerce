@@ -31,7 +31,9 @@
               <td>{{ data.quantity }}</td>
               <td>{{ data.product?.price }} Fcfa</td>
               <div class="d-flex">
-                <td class="text-success">Valider</td>
+                <td class="text-success" (click)="validerCommande(data.id)">
+                  Valider
+                </td>
                 <td class="text-danger">Rejeter</td>
               </div>
             </tr>
